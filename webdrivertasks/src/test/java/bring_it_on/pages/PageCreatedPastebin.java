@@ -14,7 +14,7 @@ public class PageCreatedPastebin extends AbstractPage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath="//*[@id=\"selectable\"]/ol")
+    @FindBy(xpath="//*[@id='selectable']/ol")
     private List<WebElement> codeElements;
 
     @FindBy(xpath="//*[@id='code_buttons']//a[text()='Bash']")
