@@ -174,6 +174,7 @@ public class PriceCalculatorPage extends AbstractPage {
     
     public PriceCalculatorPage sendMessageToTenMinutesMail(String email) {
     	WaitingSomeConditions.waitForElementToBeClickable(driver,emailEstimate).click();
+	emailMyEstimate.click();
     	WaitingSomeConditions.waitForElementToBeClickable(driver,emailMyEstimate).sendKeys(email); 
     	sendEmailButton.click();
     	return this;
