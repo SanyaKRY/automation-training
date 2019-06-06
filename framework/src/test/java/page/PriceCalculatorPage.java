@@ -120,13 +120,14 @@ public class PriceCalculatorPage extends AbstractPage {
     }
     
     public PriceCalculatorPage fillOutForm(ComputeEngineUser computeEngineUser) {
+		Actions actions = new Actions(driver);
     	computeEngine.click();
     	numberOfInstances.sendKeys(computeEngineUser.getNumberOfInstances());
     	instancesFor.sendKeys(computeEngineUser.getInstancesFor());
     	dropDownBoxOperatingSystem.click();
     	selectParameter(OperatingSystemList,computeEngineUser.getOperatingSystem()); 
     	WaitingSomeConditions.waitForElementVisibilityOf(driver, dropDownBoxVMClass).click();
-    	selectParameter(VMClassList,computeEngineUser.getVMClass()); 
+    	selectParameter(VMClassList,computeEngineUser.getVMClass());
     	WaitingSomeConditions.waitForElementVisibilityOf(driver, dropDownBoxInstanceType).click();
     	selectParameter(instanceTypeList,computeEngineUser.getInstanceType());      	
     	if (computeEngineUser.isAddGPUs()) {
@@ -135,8 +136,7 @@ public class PriceCalculatorPage extends AbstractPage {
         	selectParameter(numberOfGPUsList,computeEngineUser.getNumberOfGPUs());
         	dropDownBoxGPUType.click();
         	selectParameter(GPUTypeList,computeEngineUser.getGPUType());
-		}      	
-    	Actions actions = new Actions(driver);    	
+		}  	
     	actions.moveToElement(dropDownBoxLocalSSD).build().perform();
     	dropDownBoxLocalSSD.click();
     	selectParameter(localSSDList,computeEngineUser.getLocalSSD());    	
