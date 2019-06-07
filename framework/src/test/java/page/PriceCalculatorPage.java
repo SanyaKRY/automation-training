@@ -120,7 +120,7 @@ public class PriceCalculatorPage extends AbstractPage {
     }
     
     public PriceCalculatorPage fillOutForm(ComputeEngineUser computeEngineUser) {
-		Actions actions = new Actions(driver);
+	Actions actions = new Actions(driver);
     	computeEngine.click();
     	numberOfInstances.sendKeys(computeEngineUser.getNumberOfInstances());
     	instancesFor.sendKeys(computeEngineUser.getInstancesFor());
@@ -136,7 +136,7 @@ public class PriceCalculatorPage extends AbstractPage {
         	selectParameter(numberOfGPUsList,computeEngineUser.getNumberOfGPUs());
         	dropDownBoxGPUType.click();
         	selectParameter(GPUTypeList,computeEngineUser.getGPUType());
-		}  	
+	}  	
     	actions.moveToElement(dropDownBoxLocalSSD).build().perform();
     	dropDownBoxLocalSSD.click();
     	selectParameter(localSSDList,computeEngineUser.getLocalSSD());    	
