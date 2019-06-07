@@ -24,9 +24,7 @@ public class PriceCalculatorTest {
 	protected static final String LOCAL_SSD="2x375 GB";
 	protected static final String DATACENTER_LOCATION="Frankfurt";
 	protected static final String COMMITED_USAGE="1 Year";
-	
-	PriceCalculatorPage priceCalculatorPage;
-	
+		
 	@BeforeMethod
 	public void SetUp(){
         driver = new ChromeDriver();
@@ -47,8 +45,8 @@ public class PriceCalculatorTest {
 		String mainWindow = driver.getWindowHandle();		
 		TenMinuteMailPage tenMinuteMailPage = new TenMinuteMailPage(driver).openTemporaryMailWindow();
 		for (String windowHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(windowHandle);
-        }
+			driver.switchTo().window(windowHandle);
+                }
 		String temporaryMail = tenMinuteMailPage.getTenMinuteMailText();
 		String secondWindow = driver.getWindowHandle();		
 		driver.switchTo().window(mainWindow);
