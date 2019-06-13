@@ -136,7 +136,7 @@ public class PriceCalculatorPage extends AbstractPage {
         	selectParameter(numberOfGPUsList,computeEngineUser.getNumberOfGPUs());
         	dropDownBoxGPUType.click();
         	selectParameter(GPUTypeList,computeEngineUser.getGPUType());
-	}  	
+	    }  	
     	actions.moveToElement(dropDownBoxLocalSSD).build().perform();
     	dropDownBoxLocalSSD.click();
     	selectParameter(localSSDList,computeEngineUser.getLocalSSD());    	
