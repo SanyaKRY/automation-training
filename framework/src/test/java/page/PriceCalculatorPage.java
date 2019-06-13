@@ -88,7 +88,7 @@ public class PriceCalculatorPage extends AbstractPage {
     @FindBy(xpath="//button[@ng-click='listingCtrl.addComputeServer(ComputeEngineForm);' and @aria-label='Add to Estimate']")
     private WebElement addToEstimate;
 
-    private final By labelComputeEngine =By.xpath("//*[@id='compute']/md-toolbar//*[text()='Compute Engine']");   
+    private final By labelComputeEngine = By.xpath("//*[@id='compute']/md-toolbar//*[text()='Compute Engine']");   
         
     @FindBy(xpath="//*[@class='md-title']/b[@class='ng-binding']")
     private WebElement CostFromEstimate;
