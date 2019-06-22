@@ -30,53 +30,53 @@ public class PriceCalculatorPage extends AbstractPage {
 	@FindBy(xpath="//md-tab-item/div[@title='Compute Engine' and @class='tab-holder compute']")
     private WebElement computeEngine;
 
-    @FindBy(id="input_51")
+    @FindBy(id="input_52")
     private WebElement numberOfInstances;
 
-    @FindBy(id="input_52")
+    @FindBy(id="input_53")
     private WebElement instancesFor;
 
-    @FindBy(id="select_value_label_44")
+    @FindBy(id="select_value_label_45")
     private WebElement dropDownBoxOperatingSystem;
-    @FindBy(xpath="//*[@id='select_container_64']//md-option")
+    @FindBy(xpath="//*[@id='select_container_65']//md-option")
     private List<WebElement> OperatingSystemList;    
 
-    @FindBy(id="select_value_label_45")
+    @FindBy(id="select_value_label_46")
     private WebElement dropDownBoxVMClass;
-    @FindBy(xpath="//*[@id='select_container_68']//*[@class='md-text']")
+    @FindBy(xpath="//*[@id='select_container_69']//*[@class='md-text']")
     private List<WebElement> VMClassList;
     
-    @FindBy(id="select_value_label_47")
+    @FindBy(id="select_value_label_48")
     private WebElement dropDownBoxInstanceType;
-    @FindBy(xpath="//*[@id='select_container_75']//md-option")
+    @FindBy(xpath="//*[@id='select_container_76']//md-option")
     private List<WebElement> instanceTypeList;    
   
     @FindBy(xpath="//*[@ng-model='listingCtrl.computeServer.addGPUs']")
     private WebElement addGPUs;    
 
-    @FindBy(id="select_value_label_333")
+    @FindBy(id="select_value_label_334")
     private WebElement dropDownBoxNumberOfGPUs;
-    @FindBy(xpath="//*[@id='select_container_336']//md-option")
+    @FindBy(xpath="//*[@id='select_container_337']//md-option")
     private List<WebElement> numberOfGPUsList;
     
-    @FindBy(id="select_value_label_334")
+    @FindBy(id="select_value_label_335")
     private WebElement dropDownBoxGPUType;
-    @FindBy(xpath="//*[@id='select_container_338']//md-option")
+    @FindBy(xpath="//*[@id='select_container_339']//md-option")
     private List<WebElement> GPUTypeList;
     
-    @FindBy(id="select_value_label_48")
+    @FindBy(id="select_value_label_49")
     private WebElement dropDownBoxLocalSSD;
-    @FindBy(xpath="//*[@id='select_container_77']//md-option/div")
+    @FindBy(xpath="//*[@id='select_container_78']//md-option/div")
     private List<WebElement> localSSDList;
   
-    @FindBy(id="select_value_label_49")
+    @FindBy(id="select_value_label_50")
     private WebElement dropDownBoxDatacenterLocation;
-    @FindBy(xpath="//*[@id='select_container_79']//md-option/div")
+    @FindBy(xpath="//*[@id='select_container_80']//md-option/div")
     private List<WebElement> datacenterLocationList;
 
-    @FindBy(id="select_value_label_50")
+    @FindBy(id="select_value_label_51")
     private WebElement dropDownBoxCommitedUsage;
-    @FindBy(xpath="//*[@id='select_container_84']//md-option/div")
+    @FindBy(xpath="//*[@id='select_container_85']//md-option/div")
     private List<WebElement> commitedUsageList;
 
     @FindBy(xpath="//button[@ng-click='listingCtrl.addComputeServer(ComputeEngineForm);' and @aria-label='Add to Estimate']")

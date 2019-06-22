@@ -21,6 +21,8 @@ public class TenMinuteMailPage extends AbstractPage {
 	
 	@FindBy(xpath="//*[@id='tab1']//table[@class='quote']//td/h3")
 	 private List<WebElement> finalCostFromLetter;
+	 
+	private final By label10MinuteMail = By.xpath("//*[@id='header']//*[text()='10 Минутная Почта']");
 	
 	public TenMinuteMailPage(WebDriver driver) {
 		super(driver);
@@ -38,10 +40,12 @@ public class TenMinuteMailPage extends AbstractPage {
     }
 	
 	public String getTenMinuteMailText() {
+		waitForPresenceOfElementLocated(driver, label10MinuteMail);
 		return temporaryMail.getAttribute("value");	        
 	 }
 	
 	public String getFinalCostFromLetter(){
+		//иногда приходится ждать очень долга письма, не знаю с чем это связано
 		new WebDriverWait(driver, 300).until(ExpectedConditions.visibilityOf(newMessageFromGoogleCloudPlatformPriceEstimate)).click();
 	    return finalCostFromLetter.get(1).getText();
 	}
