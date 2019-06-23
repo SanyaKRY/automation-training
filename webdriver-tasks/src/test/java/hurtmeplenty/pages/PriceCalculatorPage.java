@@ -1,4 +1,4 @@
-package hardcore.pages;
+package hurtmeplenty.pages;
 
 import java.util.List;
 
@@ -87,24 +87,16 @@ public class PriceCalculatorPage extends AbstractPage {
   @FindBy(xpath="//*[@class='md-title']/b[@class='ng-binding']")
   private WebElement CostFromEstimate;
     
-  @FindBy(id="email_quote")
-  private WebElement emailEstimateButton;
-    
-  private final By labelEmailYourEstimate = By.xpath("//*[@id='dialogContent_395']//*[text()='Email Your Estimate']");
-    
-  @FindBy(id="input_389")
-  private WebElement fieldForEmail;
-
-  @FindBy(xpath="//*[@id='dialogContent_395']//button[@aria-label='Send Email']")
-  private WebElement sendEmailButton;    
-        
+  @FindBy(xpath="//*[@id='compute']/md-list//*[@role='listitem']/div")
+  private List<WebElement> estimateContent;
+          
   public void selectParameter(List<WebElement> parameters, String parameter) {
     waitForElementVisibilityOf(driver, parameters.get(0));
-    for(WebElement webElement: parameters) {
-      if(webElement.getText().contains(parameter)) {
+    for (WebElement webElement : parameters) {
+      if (webElement.getText().contains(parameter)) {
         webElement.click();
         break;
-      }
+      }            
     }
   }
     
@@ -118,18 +110,18 @@ public class PriceCalculatorPage extends AbstractPage {
     computeEngine.click();
     numberOfInstances.sendKeys(NumberOfInstances);
     instancesFor.sendKeys(InstancesFor);
-    dropDownBoxOperatingSystem.click();
+    dropDownBoxOperatingSystem.click();    	
     selectParameter(OperatingSystemList, OperatingSystem);
-    waitForElementVisibilityOf(driver, dropDownBoxVMClass).click();
+    waitForElementVisibilityOf(driver, dropDownBoxVMClass).click();    	
     selectParameter(VMClassList, VMClass);
-    waitForElementVisibilityOf(driver, dropDownBoxInstanceType).click();
+    waitForElementVisibilityOf(driver, dropDownBoxInstanceType).click();   	
     selectParameter(instanceTypeList, InstanceType);
     waitForElementVisibilityOf(driver, addGPUs).click();
-    waitForElementVisibilityOf(driver, dropDownBoxNumberOfGPUs).click();
+    waitForElementVisibilityOf(driver, dropDownBoxNumberOfGPUs).click();    	
     selectParameter(numberOfGPUsList, NumberOfGPUs);
-    dropDownBoxGPUType.click();
-    selectParameter(GPUTypeList, GPUType);
-    Actions actions = new Actions(driver);
+    dropDownBoxGPUType.click();        
+    selectParameter(GPUTypeList, GPUType);        
+    Actions actions = new Actions(driver);    	
     actions.moveToElement(dropDownBoxLocalSSD).build().perform();
     dropDownBoxLocalSSD.click();
     selectParameter(localSSDList,LocalSSD);    	
@@ -138,23 +130,21 @@ public class PriceCalculatorPage extends AbstractPage {
     selectParameter(datacenterLocationList, DatacenterLocation);
     dropDownBoxCommitedUsage.click();
     selectParameter(commitedUsageList, CommitedUsage); 
-    waitForElementVisibilityOf(driver, addToEstimate).click();
+    waitForElementVisibilityOf(driver, addToEstimate).click();    	
     return this;
   }
     
-  public String getTotalCostFromEstimate() {
-    waitForPresenceOfElementLocated(driver, labelComputeEngine);
-    return CostFromEstimate.getText();
+  public boolean comparesValuesFromEstimate(String VMClass, String instanceType, String region, String localSSD, String commitmentTerm) {
+    waitForPresenceOfElementLocated(driver, labelComputeEngine); 
+    return estimateContent.get(1).getText().contains(VMClass.toLowerCase())
+        &&estimateContent.get(2).getText().contains(instanceType)
+    	&&estimateContent.get(3).getText().contains(region)
+    	&&estimateContent.get(4).getText().contains(localSSD)
+    	&&estimateContent.get(5).getText().contains(commitmentTerm) ? true : false;
   }
-        
-  public void sendMessageToTenMinutesMail(String email) {
-    waitForPresenceOfElementLocated(driver, labelComputeEngine);
-    emailEstimateButton.click();
-    waitForPresenceOfElementLocated(driver, labelEmailYourEstimate);
-    fieldForEmail.click();
-    fieldForEmail.clear(); 	
-    fieldForEmail.sendKeys(email);    	
-    sendEmailButton.click();
+    
+  public boolean comparesTotalCostFromEstimate(String totalEstimateCost) {
+    return CostFromEstimate.getText().contains(totalEstimateCost) ? true : false;    	
   }
 
 }

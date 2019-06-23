@@ -1,4 +1,4 @@
-package hardcore.pages;
+package hurtmeplenty.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,11 +27,11 @@ public class CloudGoogleMainPage extends AbstractPage {
   @FindBy(xpath="//*[@href='https://cloud.google.com/products/calculator/' and @track-name='pricing']")
   private WebElement calculatorLink;
     
-  public PriceCalculatorPage goToPriceCalculatorPage(){ 
+  public PriceCalculatorPage goToPriceCalculatorPage() { 
     products.click();
     pricing.click();
-    waitForElementVisibilityOf(driver, calculatorLink).click();  	
-    return new PriceCalculatorPage(driver);    
+    waitForElementVisibilityOf(driver, calculatorLink).click(); 
+    return new PriceCalculatorPage(driver);
   }
 
 }
