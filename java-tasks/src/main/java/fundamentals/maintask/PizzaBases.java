@@ -5,7 +5,7 @@ public enum PizzaBases {
   ORDINARY("Ordinary", "                    ", 1), CALSONE("Calzone", "                     ", 1.5);	
 	
   String pizzaBaseName;
-  String spaceBar;     //не несет смысловой нагрузки, создана только  для части 3, внешнего вида
+  String spaceBar;     //РЅРµ РЅРµСЃРµС‚ СЃРјС‹СЃР»РѕРІРѕР№ РЅР°РіСЂСѓР·РєРё, СЃРѕР·РґР°РЅР° С‚РѕР»СЊРєРѕ РґР»СЏ С‡Р°СЃС‚Рё 3, РІРЅРµС€РЅРµРіРѕ РІРёРґР°
   double pizzaBasePrice;	
 	
   PizzaBases(String pizzaBaseName, String spaceBar, double pizzaBasePrice) {	

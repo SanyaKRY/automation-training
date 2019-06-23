@@ -28,9 +28,9 @@ public class OrderingPizza {
 	
   void showPizzaAttributes() {
 	for (Pizza pizza : pizzas) {
-	  System.out.println("����� ������ ���� ������ ����: " + pizza.PIZZA_ORDER_NUMBER + " ��� �������: " + clientName + 
-	      " ����� �������: "+clientNumber+" �������� ����(�): " + 
-		  pizza.pizzaName+" ����������: "+pizza.countOfPizzas);
+	  System.out.println("Номер заказа пицц одного вида: " + pizza.PIZZA_ORDER_NUMBER + " Имя клиента: " + clientName + 
+	      " Номер клиента: "+clientNumber+" Название пицц(ы): " + 
+		  pizza.pizzaName+" Количество: "+pizza.countOfPizzas);
 	}
   }
 	
@@ -50,12 +50,12 @@ public class OrderingPizza {
 	  Pizza pizza = (Pizza) iterator.next();
 	  if (pizza.getPizzaName().equals(pizzaName)) {		
 	    if (pizza.pizzaIngredients.contains(PizzaIngredients.getIngredient(ingridient))) {
-	      System.out.println("�� ���������� �������� ���������� " + ingridient + 
-	          " �������  ��� ��� ��������. ��������� �����");
+	      System.out.println("вы попытались добавить ингридиент " + ingridient + 
+	          " который уже был добавлен. Проверьте заказ");
 		} else {
 		  pizza.pizzaIngredients.add(PizzaIngredients.getIngredient(ingridient));
 		}
-		System.out.println(pizza.pizzaIngredients.size() >= PizzaIngredients.values().length ? "��� ����������� ��������� � ����� " + pizzaName : "");										
+		System.out.println(pizza.pizzaIngredients.size() >= PizzaIngredients.values().length ? "все ингридиенты добавлены в пиццу " + pizzaName : "");										
 	  }			
 	}		
   }
@@ -64,7 +64,7 @@ public class OrderingPizza {
 	for (Pizza pizza : pizzas) {
 	  if (pizza.getPizzaName().equals(pizzaName)) {
 	    if (pizzaLimitPerPerson + pizza.getCountOfPizzas() - countOfPizzas < 0) {
-	      throw new IllegalArgumentException("�� ���������� ��������� ����� ���� �� ������ ��������.");
+	      throw new IllegalArgumentException("вы попытались превысить лимит пицц на одного человека.");
 		}	
 		pizzaLimitPerPerson -= (countOfPizzas - pizza.getCountOfPizzas());	
 		pizza.setCountOfPizzas(countOfPizzas);
@@ -74,7 +74,7 @@ public class OrderingPizza {
 		
   public void isExceedingPizzaLimitPerPerson(int valuesToCheckNumberOfPizzasPerPerson) {
     if (pizzaLimitPerPerson - valuesToCheckNumberOfPizzasPerPerson < 0) {
-      throw new IllegalArgumentException("�� ���������� ��������� ����� ���� �� ������ ��������.");
+      throw new IllegalArgumentException("вы попытались превысить лимит пицц на одного человека.");
 	}		
 	pizzaLimitPerPerson -= valuesToCheckNumberOfPizzasPerPerson;	
   }
@@ -83,8 +83,8 @@ public class OrderingPizza {
   public String toString() {
 	double totalAmountPrice = 0;
 	System.out.println("********************************");
-	System.out.println("�����: " + ORDER_NUMBER);
-	System.out.println("������: " + clientNumber);
+	System.out.println("Заказ: " + ORDER_NUMBER);
+	System.out.println("Клиент: " + clientNumber);
 	  for (Pizza pizza : pizzas) {
 	    double priceForOnePizza = 0;			
 		for (PizzaIngredients pizzaIngredients : pizza.pizzaIngredients) {
@@ -93,20 +93,19 @@ public class OrderingPizza {
 		for (PizzaBases pizzaBases : pizza.pizzaBases) {
 		  priceForOnePizza += pizzaBases.getPizzaBasePrice();
 		}					
-		System.out.println("��������: " + pizza.getPizzaName());
+		System.out.println("Название: " + pizza.getPizzaName());
 		System.out.print("--------------------------------");
 		System.out.print(pizza.pizzaBases.toString().replaceAll(",|\\[|\\]|end", ""));
 		System.out.println(pizza.pizzaIngredients.toString().replaceAll(",|\\[|\\]|end", ""));
 		System.out.println("--------------------------------");
-		System.out.println("�����:" + priceForOnePizza + "$");
-		System.out.println("���-��:" + pizza.countOfPizzas);
+		System.out.println("Всего:" + priceForOnePizza + "$");
+		System.out.println("Кол-во:" + pizza.countOfPizzas);
 		System.out.println("--------------------------------");
 		priceForOnePizza *= pizza.countOfPizzas;
 		totalAmountPrice += priceForOnePizza;
 	  }
-	System.out.println("����� �����:" + totalAmountPrice + "$");
-	System.out.println("********************************");	
-	System.out.println("ыввывыфвывыввыыв");
+	System.out.println("Общая сумма:" + totalAmountPrice + "$");
+	System.out.println("********************************");
 	return super.toString();
   }
 

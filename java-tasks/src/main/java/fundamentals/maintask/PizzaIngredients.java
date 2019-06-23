@@ -8,7 +8,7 @@ public enum PizzaIngredients {
       PEPPERONI("Pepperoni", "                   ", 0.6), OLIVES("Olives", "                      ", 0.5);
 	
   String ingredientName;
-  String spaceBar;     //не несет смысловой нагрузки, создана только  для части 3, внешнего вида 
+  String spaceBar;     //РЅРµ РЅРµСЃРµС‚ СЃРјС‹СЃР»РѕРІРѕР№ РЅР°РіСЂСѓР·РєРё, СЃРѕР·РґР°РЅР° С‚РѕР»СЊРєРѕ РґР»СЏ С‡Р°СЃС‚Рё 3, РІРЅРµС€РЅРµРіРѕ РІРёРґР°
   double ingredientPrice;
 	
   private PizzaIngredients(String ingredientName, String spaceBar, double ingredientPrice) {	

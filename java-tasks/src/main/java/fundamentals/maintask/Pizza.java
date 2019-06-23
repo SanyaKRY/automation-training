@@ -18,8 +18,8 @@ public class Pizza {
 	pizzaBases.add(PizzaBases.getPizzaBase(pizzaBaseName));
 	for (String ingridient : ingredientName) {
 	  if (pizzaIngredients.contains(PizzaIngredients.getIngredient(ingridient))) {
-	    System.out.println("вы попытались добавить ингридиент " + ingridient +
-		    " который  уже был добавлен. Проверьте заказ");
+	    System.out.println("РІС‹ РїРѕРїС‹С‚Р°Р»РёСЃСЊ РґРѕР±Р°РІРёС‚СЊ РёРЅРіСЂРµРґРёРµРЅС‚ " + ingridient +
+		    " РєРѕС‚РѕСЂС‹Р№ СѓР¶Рµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ. РџСЂРѕРІРµСЂС‚Рµ Р·Р°РєР°Р·");
 	  } else {
 	    pizzaIngredients.add(PizzaIngredients.getIngredient(ingridient));
 	  }							
@@ -41,7 +41,7 @@ public class Pizza {
 		
   void displayMessageIfPizzaContainsAllIngredients() {
 	System.out.println(pizzaIngredients.size() >= PizzaIngredients.values().length ? 
-	    "все ингредиенты добавлены в пиццу "+pizzaName : "");		
+	    "РІСЃРµ РёРЅРіСЂРµРґРёРµРЅС‚С‹ РґРѕР±Р°РІР»РµРЅС‹ РІ РїРёС†С†Сѓ "+pizzaName : "");		
   }
 
 }
