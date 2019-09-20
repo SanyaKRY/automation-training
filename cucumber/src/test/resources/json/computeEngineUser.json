@@ -1,0 +1,29 @@
+[ 
+ {"name": "qa",
+ "numberOfInstances": 4,
+ "instancesFor": "",
+ "operatingSystem": "Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS",
+ "VMClass": "Regular",
+ "instanceType": "n1-standard-8",
+ "addGPUs": true,
+ "numberOfGPUs": "1",
+ "GPUType": "NVIDIA Tesla V100",
+ "localSSD": "2x375 GB",
+ "datacenterLocation": "Frankfurt",
+ "commitedUsage": "1 Year"
+ },
+ {
+ "name": "dev",
+ "numberOfInstances": 3,
+ "instancesFor": "",
+ "operatingSystem": "Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS",
+ "VMClass": "Regular",
+ "instanceType": "n1-standard-8",
+ "addGPUs": true,
+ "numberOfGPUs": "1",
+ "GPUType": "NVIDIA Tesla V100",
+ "localSSD": "2x375 GB",
+ "datacenterLocation": "Frankfurt",
+ "commitedUsage": "1 Year"
+ }
+]
