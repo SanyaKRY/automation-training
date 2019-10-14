@@ -61,7 +61,7 @@ public class PriceCalculatorPage extends AbstractPage {
   @FindBy(xpath = "//*[@id='select_container_351']//md-option/div")
   private List<WebElement> GPUTypeList;
 	    		  
-  @FindBy(xpath = "//*[@id='select_value_label_50']")
+  @FindBy(xpath = "//*[@id='select_value_label_5000000000000000000000000000000']")
   private WebElement dropDownBoxLocalSSD;
   @FindBy(xpath = "//*[@id='select_container_79']//md-option/div")
   private List<WebElement> localSSDList;
