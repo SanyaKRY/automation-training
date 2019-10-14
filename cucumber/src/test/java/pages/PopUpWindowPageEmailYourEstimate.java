@@ -24,7 +24,7 @@ public class PopUpWindowPageEmailYourEstimate extends AbstractPage {
   @FindBy(xpath = "//*[@id='dialogContent_407']//button[@aria-label='Send Email']")
   private WebElement sendEmailButton;  
 	   
-  private final By labelEmailYourEstimate = By.xpath("//*[@id='dialogContent_407']//*[text()='Email Your Estimate']");
+  private final By labelEmailYourEstimate = By.xpath("//*[text()='Email Your Estimate']");
 	   
   public PopUpWindowPageEmailYourEstimate(WebDriver driver) {
 	super(driver);
