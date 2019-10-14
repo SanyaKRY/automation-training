@@ -18,7 +18,7 @@ public class PopUpWindowPageEmailYourEstimate extends AbstractPage {
   @FindBy(id = "idIframe")
   private WebElement frame;
 	  
-  @FindBy(id = "input_401")
+  @FindBy(xpath = "//*[text()='Email ']")
   private WebElement emailField;
 	  
   @FindBy(xpath = "//*[@id='dialogContent_407']//button[@aria-label='Send Email']")
