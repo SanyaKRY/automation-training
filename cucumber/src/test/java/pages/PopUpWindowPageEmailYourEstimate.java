@@ -37,8 +37,8 @@ public class PopUpWindowPageEmailYourEstimate extends AbstractPage {
   
   public PopUpWindowPageEmailYourEstimate fillInEmailField(String email) {		    
 	WaitingSomeConditions.waitForPresenceOfElementLocated(driver, labelEmailYourEstimate);
-	emailField.click();
-	emailField.clear(); 	
+	//emailField.click();
+	//emailField.clear(); 	
 	emailField.sendKeys(email); 
 	return this;
   }
