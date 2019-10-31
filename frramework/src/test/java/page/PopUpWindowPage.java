@@ -12,7 +12,7 @@ public class PopUpWindowPage extends AbstractPage {
 	
   private final Logger logger = LogManager.getRootLogger();
 	
-  @FindBy(id = "input_415")
+  @FindBy(id = "input_420")
   private WebElement emailField;
 		
   @FindBy(xpath = "//*[@aria-label='Send Email']")
