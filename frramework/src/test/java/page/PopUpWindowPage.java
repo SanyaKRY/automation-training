@@ -2,6 +2,7 @@ package page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +24,8 @@ public class PopUpWindowPage extends AbstractPage {
   public PopUpWindowPage(WebDriver driver) {
 	super(driver);
   }
+  
+  private final By labelEmailYourEstimate = By.xpath("//*[text()='Email Your Estimate']");
 
   @Override
   public PopUpWindowPage openPage() {
@@ -30,7 +33,9 @@ public class PopUpWindowPage extends AbstractPage {
   }
 
   public PopUpWindowPage fillInEmailField(String email) {	
-	WaitingSomeConditions.waitForElementVisibilityOf(driver,emailField).click();
+	WaitingSomeConditions.waitForPresenceOfElementLocated(driver, labelEmailYourEstimate);
+		//emailField.click();
+		//emailField.clear(); 
 	emailField.sendKeys(email);
     logger.info("the email is entered");
 	return this;
