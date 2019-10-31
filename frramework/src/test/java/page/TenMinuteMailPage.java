@@ -46,8 +46,8 @@ public class TenMinuteMailPage extends AbstractPage {
   }
 		  
   public String openNewMessageAndGetFinalCostFromLetter(){
+	new WebDriverWait(driver, 300).until(ExpectedConditions.visibilityOf(newMessage)).click();	
 	logger.info("total cost from letter is received");
-	new WebDriverWait(driver, 300).until(ExpectedConditions.visibilityOf(newMessage)).click();			
 	return finalCostFromLetter.get(1).getText();
   }		  
 }
