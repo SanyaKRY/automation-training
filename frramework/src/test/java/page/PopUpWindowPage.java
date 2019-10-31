@@ -29,11 +29,17 @@ public class PopUpWindowPage extends AbstractPage {
 	return this;		
   }
 
-  public PopUpWindowPage fillInEmailFieldAndPressSendEmailButton(String email) {	
+  public PopUpWindowPage fillInEmailField(String email) {	
 	WaitingSomeConditions.waitForElementVisibilityOf(driver,emailField).click();
 	emailField.sendKeys(email);
-	new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(sendEmailButton)).click();
-    logger.info("the letter is sent");
+    logger.info("the email is entered");
 	return this;
   }
+  
+  public PopUpWindowPage PressSendEmailButton() {			
+		new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(sendEmailButton)).click();
+	    logger.info("the letter is sent");
+		return this;
+	  }
+  
 }
