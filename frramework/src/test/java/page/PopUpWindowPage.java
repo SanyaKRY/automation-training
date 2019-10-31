@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import util.WaitingSomeConditions;
 
@@ -30,7 +32,7 @@ public class PopUpWindowPage extends AbstractPage {
   public PopUpWindowPage fillInEmailFieldAndPressSendEmailButton(String email) {	
 	WaitingSomeConditions.waitForElementVisibilityOf(driver,emailField).click();
 	emailField.sendKeys(email);
-    sendEmailButton.click();
+	new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(sendEmailButton)).click();
     logger.info("the letter is sent");
 	return this;
   }
