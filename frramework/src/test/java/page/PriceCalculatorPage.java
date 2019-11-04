@@ -1,27 +1,15 @@
 package page;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.WebElement;import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import model.ComputeEngine;
-import net.bytebuddy.implementation.bytecode.ByteCodeAppender.Size;
 import util.WaitingSomeConditions;
 
 public class PriceCalculatorPage extends AbstractPage {
@@ -127,6 +115,7 @@ public class PriceCalculatorPage extends AbstractPage {
 	selectParameter(OperatingSystemList,computeEngine.getOperatingSystem());
 	dropDownBoxVMClass.click();
 	selectParameter(VMClassList,computeEngine.getVmClass());	
+	WaitingSomeConditions.moveinViewPort(dropDownBoxInstanceType);	
 	dropDownBoxInstanceType.click();
 	selectParameter(instanceTypeList,computeEngine.getInstanceType());
 	if (computeEngine.isAddGPUs()) {
@@ -136,10 +125,10 @@ public class PriceCalculatorPage extends AbstractPage {
 	  dropDownBoxGPUType.click();
 	  selectParameter(GPUTypeList,computeEngine.getGpuType());
 	}
-	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", dropDownBoxLocalSSD);		
+	WaitingSomeConditions.moveinViewPort(dropDownBoxLocalSSD);
 	dropDownBoxLocalSSD.click();		
-	selectParameter(localSSDList,computeEngine.getLocalSSD());  		
-	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", dropDownBoxDatacenterLocation);			
+	selectParameter(localSSDList,computeEngine.getLocalSSD());	
+	WaitingSomeConditions.moveinViewPort(dropDownBoxDatacenterLocation);			
 	dropDownBoxDatacenterLocation.click();		
 	selectParameter(datacenterLocationList, computeEngine.getDatacenterLocation());		
 	dropDownBoxCommitedUsage.click();

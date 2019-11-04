@@ -32,19 +32,12 @@ public class PopUpWindowPage extends AbstractPage {
 	return this;		
   }
 
-  public PopUpWindowPage fillInEmailField(String email) {	
-	WaitingSomeConditions.waitForPresenceOfElementLocated(driver, labelEmailYourEstimate);
-		//emailField.click();
-		//emailField.clear(); 
+  public PopUpWindowPage fillInEmailField(String email) {
+	WaitingSomeConditions.waitForElementVisibilityOf(driver,emailField).click();
 	emailField.sendKeys(email);
-    logger.info("the email is entered");
+	WaitingSomeConditions.waitForElementToBeClickable(driver,sendEmailButton).click();
+    logger.info("the email is entered and sent");
 	return this;
   }
-  
-  public PopUpWindowPage PressSendEmailButton() {			
-		new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(sendEmailButton)).click();
-	    logger.info("the letter is sent");
-		return this;
-	  }
-  
+    
 }

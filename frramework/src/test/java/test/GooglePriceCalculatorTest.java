@@ -34,8 +34,7 @@ public class GooglePriceCalculatorTest extends CommonConditions{
 	priceCalculatorPage		
 	    .switchToFrame()
 		.goToPopUpWindowPage()
-		.fillInEmailField(temporaryMail)
-		.PressSendEmailButton();
+		.fillInEmailField(temporaryMail);
 	driver.switchTo().window(secondWindow);
 		
 	String totalCostFromLetter = tenMinuteMailPage.openNewMessageAndGetFinalCostFromLetter();
