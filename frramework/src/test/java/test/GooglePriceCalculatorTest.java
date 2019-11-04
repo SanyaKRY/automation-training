@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import model.ComputeEngine;
 import page.GoogleCloudMainPage;
+import page.PopUpWindowPage;
 import page.PriceCalculatorPage;
 import page.TenMinuteMailPage;
 import service.ComputeEngineCreator;
@@ -31,10 +32,10 @@ public class GooglePriceCalculatorTest extends CommonConditions{
 	String temporaryMail = tenMinuteMailPage.getTenMinuteMailText();
 	String secondWindow = driver.getWindowHandle();
 	driver.switchTo().window(mainWindow);
-	priceCalculatorPage		
-	    .switchToFrame()
-		.goToPopUpWindowPage()
-		.fillInEmailField(temporaryMail);
+	PopUpWindowPage popUpWindowPage= new PopUpWindowPage(driver);		
+	popUpWindowPage
+	  .switchToFrame()
+	  .fillInEmailField(temporaryMail);
 	driver.switchTo().window(secondWindow);
 		
 	String totalCostFromLetter = tenMinuteMailPage.openNewMessageAndGetFinalCostFromLetter();

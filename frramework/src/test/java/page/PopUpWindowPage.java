@@ -15,6 +15,9 @@ public class PopUpWindowPage extends AbstractPage {
 	
   private final Logger logger = LogManager.getRootLogger();
 	
+  @FindBy(id="myFrame")
+  private WebElement frame;
+  
   @FindBy(xpath = "//*[@ng-model='emailQuote.user.email']")
   private WebElement emailField;
 		
@@ -30,6 +33,11 @@ public class PopUpWindowPage extends AbstractPage {
   @Override
   public PopUpWindowPage openPage() {
 	return this;		
+  }
+  
+  public PopUpWindowPage switchToFrame(){
+	new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
+	return this;
   }
 
   public PopUpWindowPage fillInEmailField(String email) {

@@ -139,13 +139,9 @@ public class PriceCalculatorPage extends AbstractPage {
   }
 	  
   public String getTotalCostFromEstimate() {
+	emailEstimateButton.click();
 	logger.info("total cost from estimate is received");
 	return CostFromEstimate.getText();
   }
-	  
-  public PopUpWindowPage goToPopUpWindowPage(){
-    emailEstimateButton.click();
-	return new PopUpWindowPage(driver);
-  }
-
+	
 }
