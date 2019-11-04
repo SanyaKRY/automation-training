@@ -33,9 +33,10 @@ public class PopUpWindowPage extends AbstractPage {
   }
 
   public PopUpWindowPage fillInEmailField(String email) {
-	WaitingSomeConditions.waitForElementVisibilityOf(driver,emailField).click();
+	WaitingSomeConditions.moveinViewPort(emailField);
 	emailField.sendKeys(email);
-	WaitingSomeConditions.waitForElementToBeClickable(driver,sendEmailButton).click();
+	WaitingSomeConditions.moveinViewPort(sendEmailButton);
+	sendEmailButton.click();
     logger.info("the email is entered and sent");
 	return this;
   }
