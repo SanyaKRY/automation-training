@@ -6,14 +6,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.JavascriptExecutor;
+
+import util.WaitingSomeConditions;
 
 public class TenMinuteMailPage extends AbstractPage {
 	
   private final String TEN_MINUTE_EMAIL_PAGE_URL = "https://10minutemail.net/";
+  
   private final Logger logger = LogManager.getRootLogger();
 		
   @FindBy(id = "fe_text")
@@ -29,14 +30,14 @@ public class TenMinuteMailPage extends AbstractPage {
 	super(driver);
   }
 
-  @Override
-  protected AbstractPage openPage() {
+  public AbstractPage openPage() {
 	driver.get(TEN_MINUTE_EMAIL_PAGE_URL);
 	return this;
   }
 		  
   public TenMinuteMailPage openTemporaryMailWindow() {
-	((JavascriptExecutor) driver).executeScript("window.open(arguments[0])", "https://10minutemail.net/");
+	driver.switchTo().newWindow(WindowType.TAB);
+	openPage();
 	return this;
   }
 		  
@@ -46,7 +47,7 @@ public class TenMinuteMailPage extends AbstractPage {
   }
 			  
   public String openNewMessageAndGetFinalCostFromLetter(){
-	new WebDriverWait(driver, 240).until(ExpectedConditions.visibilityOf(newMessage)).click();	
+	WaitingSomeConditions.waitForElementVisibilityOf(driver, newMessage, 180).click();	
 	logger.info("total cost from letter is received");
 	return finalCostFromLetter.get(1).getText();
   }		  

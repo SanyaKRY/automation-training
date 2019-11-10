@@ -6,7 +6,7 @@
                 <Pattern>%d %p %c{2} [%t] %l %m%n</Pattern>
             </PatternLayout>
         </Console>
-        <File name="File" fileName="target/logs/frramework.log">
+        <File name="File" fileName="target/logs/framework.log">
             <PatternLayout>
                 <Pattern>%d %p %c{2} [%t] %m%n</Pattern>
             </PatternLayout>

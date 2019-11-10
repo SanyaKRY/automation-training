@@ -7,26 +7,15 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import model.ComputeEngine;
 import util.WaitingSomeConditions;
 
 public class PriceCalculatorPage extends AbstractPage {
 	
-  private final Logger logger = LogManager.getRootLogger();
   private final String PRICE_CALCULATOR_PAGE_URL = "https://cloud.google.com/products/calculator/";
-	  
-  public PriceCalculatorPage(WebDriver driver) {
-	super(driver);
-  }
-
-  @Override
-  public PriceCalculatorPage openPage() {
-	driver.navigate().to(PRICE_CALCULATOR_PAGE_URL);
-	return this;		
-  }
+  
+  private final Logger logger = LogManager.getRootLogger();
 			
   @FindBy(id="myFrame")
   private WebElement frame;
@@ -39,19 +28,22 @@ public class PriceCalculatorPage extends AbstractPage {
 
   @FindBy(id="input_54")
   private WebElement instancesForField;
-		  
+	
   @FindBy(id="select_value_label_46")
   private WebElement dropDownBoxOperatingSystem;
+  
   @FindBy(xpath="//*[@id='select_container_66']//md-option")
   private List<WebElement> OperatingSystemList; 
 		  
   @FindBy(id="select_value_label_47")
   private WebElement dropDownBoxVMClass;
+  
   @FindBy(xpath="//*[@id='select_container_70']//md-option")
   private List<WebElement> VMClassList;
 		  
   @FindBy(id="select_value_label_49")
   private WebElement dropDownBoxInstanceType;
+  
   @FindBy(xpath="//*[@id='select_container_77']//md-option")
   private List<WebElement> instanceTypeList;    
 		 
@@ -60,26 +52,31 @@ public class PriceCalculatorPage extends AbstractPage {
 		  
   @FindBy(id="select_value_label_346")
   private WebElement dropDownBoxNumberOfGPUs;
+  
   @FindBy(xpath="//*[@id='select_container_349']//md-option")
   private List<WebElement> numberOfGPUsList;
 		    
   @FindBy(id="select_value_label_347")
   private WebElement dropDownBoxGPUType;
+  
   @FindBy(xpath="//*[@id='select_container_351']//md-option/div")
   private List<WebElement> GPUTypeList;
 		  
   @FindBy(xpath="//*[@id='select_value_label_50']")
   private WebElement dropDownBoxLocalSSD;
+  
   @FindBy(xpath="//*[@id='select_container_79']//md-option/div")
   private List<WebElement> localSSDList;
 		  
   @FindBy(id="select_value_label_51")
   private WebElement dropDownBoxDatacenterLocation;
+  
   @FindBy(xpath="//*[@id='select_container_81']//md-option/div")
   private List<WebElement> datacenterLocationList;
 		  
   @FindBy(id="select_value_label_52")
   private WebElement dropDownBoxCommitedUsage;
+  
   @FindBy(xpath="//*[@id='select_container_86']//md-option/div")
   private List<WebElement> commitedUsageList;
 		  
@@ -91,6 +88,15 @@ public class PriceCalculatorPage extends AbstractPage {
 		  
   @FindBy(id = "email_quote")
   private WebElement emailEstimateButton;
+    
+  public PriceCalculatorPage(WebDriver driver) {
+    super(driver);
+  }
+
+  public PriceCalculatorPage openPage() {
+    driver.get(PRICE_CALCULATOR_PAGE_URL);
+    return this;		
+  }
   
   public void selectParameter(List<WebElement> parameters, String parameter) {
 	WaitingSomeConditions.waitForElementVisibilityOf(driver, parameters.get(0));
@@ -103,7 +109,7 @@ public class PriceCalculatorPage extends AbstractPage {
   }
 		
   public PriceCalculatorPage switchToFrame(){
-	new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
+	driver.switchTo().frame(frame);
 	return this;
   }
 		  
@@ -115,7 +121,7 @@ public class PriceCalculatorPage extends AbstractPage {
 	selectParameter(OperatingSystemList,computeEngine.getOperatingSystem());
 	dropDownBoxVMClass.click();
 	selectParameter(VMClassList,computeEngine.getVmClass());	
-	WaitingSomeConditions.moveinViewPort(dropDownBoxInstanceType);	
+	WaitingSomeConditions.moveToElement(dropDownBoxInstanceType);	
 	dropDownBoxInstanceType.click();
 	selectParameter(instanceTypeList,computeEngine.getInstanceType());
 	if (computeEngine.isAddGPUs()) {
@@ -125,10 +131,10 @@ public class PriceCalculatorPage extends AbstractPage {
 	  dropDownBoxGPUType.click();
 	  selectParameter(GPUTypeList,computeEngine.getGpuType());
 	}
-	WaitingSomeConditions.moveinViewPort(dropDownBoxLocalSSD);
+	WaitingSomeConditions.moveToElement(dropDownBoxLocalSSD);
 	dropDownBoxLocalSSD.click();		
 	selectParameter(localSSDList,computeEngine.getLocalSSD());	
-	WaitingSomeConditions.moveinViewPort(dropDownBoxDatacenterLocation);			
+	WaitingSomeConditions.moveToElement(dropDownBoxDatacenterLocation);			
 	dropDownBoxDatacenterLocation.click();		
 	selectParameter(datacenterLocationList, computeEngine.getDatacenterLocation());		
 	dropDownBoxCommitedUsage.click();

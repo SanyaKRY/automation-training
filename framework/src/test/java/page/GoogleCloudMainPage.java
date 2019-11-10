@@ -8,7 +8,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class GoogleCloudMainPage extends AbstractPage {
 	
-  private final String GOOGLE_CLOUD_MAIN_PAGE_URL = "https://cloud.google.com/";
+  private final String GOOGLE_CLOUD_MAIN_PAGE_URL = "https://cloud.google.com/";  
+  
+  private final String searchTag = "Google Cloud Platform Pricing Calculator";
+  
   private final Logger logger = LogManager.getRootLogger();
 	  
   @FindBy(xpath="//*[@id='searchbox']/input")
@@ -20,17 +23,16 @@ public class GoogleCloudMainPage extends AbstractPage {
   public GoogleCloudMainPage(WebDriver driver) {
 	super(driver);
   }
-		
-  @Override
+
   public GoogleCloudMainPage openPage() {
-    driver.navigate().to(GOOGLE_CLOUD_MAIN_PAGE_URL);
+    driver.get(GOOGLE_CLOUD_MAIN_PAGE_URL);
 	logger.info("Google cloud page opened");
 	return this;		
   }
 		   
   public SearchResultsPage goToSearchResultsPage(){ 
     searchIcon.click(); 
-    searchIcon.sendKeys("Google Cloud Platform Pricing Calculator");
+    searchIcon.sendKeys(searchTag);
     linkToShowSearchResults.click();
     logger.info("search started");
     return new SearchResultsPage(driver);
