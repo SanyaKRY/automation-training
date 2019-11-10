@@ -19,9 +19,9 @@ public class SearchResultsPage extends AbstractPage {
 	super(driver);
   }
 		
-  public PriceCalculatorPage goToPriceCalculatorPage(){
+  public SearchResultsPage goToPriceCalculatorPage(){
 	searchResultsForRequest.get(0).click();
 	logger.info("went to the first link");
-    return new PriceCalculatorPage(driver);
+    return this;
   }
 }

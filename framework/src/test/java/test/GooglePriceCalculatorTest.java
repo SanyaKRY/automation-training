@@ -7,32 +7,44 @@ import model.ComputeEngine;
 import page.GoogleCloudMainPage;
 import page.PopUpWindowPage;
 import page.PriceCalculatorPage;
+import page.SearchResultsPage;
 import page.TenMinuteMailPage;
 import service.ComputeEngineCreator;
 import util.TabSelection;
 
 public class GooglePriceCalculatorTest extends CommonConditions{
+
+  GoogleCloudMainPage  googleCloudMainPage; 
+  SearchResultsPage searchResultsPage;
+  PriceCalculatorPage priceCalculatorPage;
+  TenMinuteMailPage tenMinuteMailPage;
+  PopUpWindowPage popUpWindowPage;
 	
   @Test
   public void totalCostFromLetterEqualsToEstimate() {
-	ComputeEngine computeEngine = ComputeEngineCreator.getComputeEngine();	
-	PriceCalculatorPage  priceCalculatorPage = new GoogleCloudMainPage(driver)
+	googleCloudMainPage= new GoogleCloudMainPage(driver) ; 
+	searchResultsPage = new SearchResultsPage(driver);
+	priceCalculatorPage = new PriceCalculatorPage(driver);
+	tenMinuteMailPage = new TenMinuteMailPage(driver);
+	popUpWindowPage = new PopUpWindowPage(driver);
+	ComputeEngine computeEngine = ComputeEngineCreator.getComputeEngine();
+	googleCloudMainPage
 	    .openPage()
-		.goToSearchResultsPage()
-		.goToPriceCalculatorPage()
+	    .goToSearchResultsPage();
+	searchResultsPage.goToPriceCalculatorPage();
+	String totalCostFromEstimate = priceCalculatorPage
 		.switchToFrame()
-		.fillOutComputeEngineForm(computeEngine);
-	String totalCostFromEstimate = priceCalculatorPage.getTotalCostFromEstimate();
-	TenMinuteMailPage tenMinuteMailPage = new TenMinuteMailPage(driver).openTemporaryMailWindow();
-	String temporaryMail = tenMinuteMailPage.getTenMinuteMailText();
+		.fillOutComputeEngineForm(computeEngine)
+		.getTotalCostFromEstimate();
+	String temporaryMail = tenMinuteMailPage
+		.openTemporaryMailWindow()
+		.getTenMinuteMailText();
 	TabSelection.goToPreviousTab(driver);
-	PopUpWindowPage popUpWindowPage = new PopUpWindowPage(driver);		
-	popUpWindowPage
-        .switchToFrame()
-	    .fillInEmailField(temporaryMail);
-	TabSelection.goToNextTab(driver);			
-	String totalCostFromLetter = tenMinuteMailPage.openNewMessageAndGetFinalCostFromLetter();			
-	Assert.assertTrue(totalCostFromEstimate.contains(totalCostFromLetter), "The total estimated cost isn't correct");				
+	popUpWindowPage.switchToFrame().fillInEmailField(temporaryMail);
+	TabSelection.goToNextTab(driver);
+	String totalCostFromLetter = tenMinuteMailPage.openNewMessageAndGetFinalCostFromLetter();		
+	Assert.assertTrue(totalCostFromEstimate.contains(totalCostFromLetter)
+	    , "The total cost from estimate doesn't match total cost from letter");			
   }
   
 }

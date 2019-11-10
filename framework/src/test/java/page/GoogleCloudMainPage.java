@@ -30,11 +30,11 @@ public class GoogleCloudMainPage extends AbstractPage {
 	return this;		
   }
 		   
-  public SearchResultsPage goToSearchResultsPage(){ 
+  public GoogleCloudMainPage goToSearchResultsPage(){ 
     searchIcon.click(); 
     searchIcon.sendKeys(searchTag);
     linkToShowSearchResults.click();
     logger.info("search started");
-    return new SearchResultsPage(driver);
+    return this;
   }
 }

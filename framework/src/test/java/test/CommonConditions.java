@@ -12,7 +12,7 @@ import util.TestListener;
 public class CommonConditions {
 	
   protected WebDriver driver;
-
+  
   @BeforeMethod()
   public void setUp() {
     driver = DriverSingleton.getDriver();
@@ -22,5 +22,5 @@ public class CommonConditions {
   public void stopBrowser() {
     DriverSingleton.closeDriver();
   }
-
+ 
 }
