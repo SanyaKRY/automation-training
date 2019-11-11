@@ -3,6 +3,7 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import driver.DriverSingleton;
 import model.ComputeEngine;
 import page.GoogleCloudMainPage;
 import page.PopUpWindowPage;
@@ -14,19 +15,14 @@ import util.TabSelection;
 
 public class GooglePriceCalculatorTest extends CommonConditions{
 
-  GoogleCloudMainPage  googleCloudMainPage; 
-  SearchResultsPage searchResultsPage;
-  PriceCalculatorPage priceCalculatorPage;
-  TenMinuteMailPage tenMinuteMailPage;
-  PopUpWindowPage popUpWindowPage;
-	
+  GoogleCloudMainPage googleCloudMainPage = new GoogleCloudMainPage(DriverSingleton.getDriver()); 
+  SearchResultsPage searchResultsPage = new SearchResultsPage(DriverSingleton.getDriver());
+  PriceCalculatorPage priceCalculatorPage = new PriceCalculatorPage(DriverSingleton.getDriver());
+  TenMinuteMailPage tenMinuteMailPage = new TenMinuteMailPage(DriverSingleton.getDriver());
+  PopUpWindowPage popUpWindowPage = new PopUpWindowPage(DriverSingleton.getDriver());
+  
   @Test
-  public void totalCostFromLetterEqualsToEstimate() {
-	googleCloudMainPage= new GoogleCloudMainPage(driver) ; 
-	searchResultsPage = new SearchResultsPage(driver);
-	priceCalculatorPage = new PriceCalculatorPage(driver);
-	tenMinuteMailPage = new TenMinuteMailPage(driver);
-	popUpWindowPage = new PopUpWindowPage(driver);
+  public void totalCostFromLetterEqualsToEstimate() {	
 	ComputeEngine computeEngine = ComputeEngineCreator.getComputeEngine();
 	googleCloudMainPage
 	    .openPage()
